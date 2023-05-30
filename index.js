@@ -1,8 +1,17 @@
-const express = require('express');
+import * as dotenv from 'dotenv';
+import express from 'express';
+import secrets from './secrets.js';
+import users from './users.js';
+dotenv.config();
+
+// const dotenv = require('dotenv');
+// dotenv.config();
+// const express = require('express');
 const app = express();
 const port = 3000;
 
-const users = require('./users');
+// const users = require('./users');
+// const secrets = require('./secrets');
 
 app.use(express.static('public'));
 app.use(express.json());
@@ -18,6 +27,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/users', users);
+app.use('/secrets', secrets);
 app.use((err, req, res, next) => {
   res.status(200).send('Something broke');
 });

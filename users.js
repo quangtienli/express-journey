@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
 const users = [
@@ -51,4 +51,4 @@ router.delete('/:userId', (req, res) => {
   res.status(200).send(users);
 });
 
-module.exports = router;
+export default router;
